@@ -5,6 +5,11 @@ import ProjectsSection from './projects';
 import PortfolioHero from './home';
 import ClubsSection from './clubs';
 import LeadershipResearchSection from './leadership';
+import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
+import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
+
+gsap.registerPlugin(SplitText, ScrambleTextPlugin);
 function Typewriter({ taglines, speed = 80, pause = 1200 }) {
   const [currentTagline, setCurrentTagline] = useState(0);
   const [displayed, setDisplayed] = useState("");
@@ -125,54 +130,33 @@ const Portfolio = () => {
     }
   ];
 useEffect(() => {
-  // Helper to load a script if not already loaded
-  function loadScript(src) {
-    return new Promise((resolve) => {
-      if (document.querySelector(`script[src="${src}"]`)) return resolve();
-      const script = document.createElement('script');
-      script.src = src;
-      script.onload = resolve;
-      document.head.appendChild(script);
+  document.querySelectorAll(".text-block").forEach((block) => {
+    const st = SplitText.create(block, { type: "chars", charsClass: "char" });
+    st.chars.forEach((char) => {
+      gsap.set(char, { attr: { "data-content": char.innerHTML } });
     });
-  }
-
-  async function runEffect() {
-    await loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js');
-    await loadScript('https://assets.codepen.io/16327/SplitText3.min.js');
-    await loadScript('https://assets.codepen.io/16327/ScrambleTextPlugin3.min.js');
-
-    if (window.SplitText && window.gsap && window.ScrambleTextPlugin) {
-      document.querySelectorAll(".text-block").forEach((block) => {
-        const st = window.SplitText.create(block, { type: "chars", charsClass: "char" });
-        st.chars.forEach((char) => {
-          window.gsap.set(char, { attr: { "data-content": char.innerHTML } });
-        });
-        block.onpointermove = (e) => {
-          st.chars.forEach((char) => {
-            const rect = char.getBoundingClientRect();
-            const cx = rect.left + rect.width / 2;
-            const cy = rect.top + rect.height / 2;
-            const dx = e.clientX - cx;
-            const dy = e.clientY - cy;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 100)
-              window.gsap.to(char, {
-                overwrite: true,
-                duration: 1.2 - dist / 100,
-                scrambleText: {
-                  text: char.dataset.content,
-                  chars: ".",
-                  speed: 0.2,
-                },
-                ease: "none",
-              });
+    block.onpointermove = (e) => {
+      st.chars.forEach((char) => {
+        const rect = char.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = e.clientX - cx;
+        const dy = e.clientY - cy;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 100)
+          gsap.to(char, {
+            overwrite: true,
+            duration: 1.2 - dist / 100,
+            scrambleText: {
+              text: char.dataset.content,
+              chars: ".",
+              speed: 0.2,
+            },
+            ease: "none",
           });
-        };
       });
-    }
-  }
-
-  runEffect();
+    };
+  });
 }, []);
   return (
       <div className="bg-black text-white min-h-screen">
