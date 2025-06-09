@@ -14,11 +14,11 @@ function Typewriter({ taglines, speed = 80, pause = 1200 }) {
     let i = -1;
     setDisplayed(""); 
     setTyping(true);
-
     const typeInterval = setInterval(() => {
       if (i < taglines[currentTagline].length-1) {
-        setDisplayed((prev) => prev + taglines[currentTagline][i]);
         i++;
+        setDisplayed((prev) => prev + taglines[currentTagline][i]);
+        
       } else {
         clearInterval(typeInterval);
         setTyping(false);
@@ -45,11 +45,6 @@ function Typewriter({ taglines, speed = 80, pause = 1200 }) {
   );
 }
 
-
-
-
-
-
 const Portfolio = () => {
   const [currentTagline, setCurrentTagline] = useState(0);
   const heroRef = useRef();
@@ -63,10 +58,6 @@ const Portfolio = () => {
     'ML Enthusiast',
     'Data analyst'
   ];
-
-  
-
-  
 
   const techStack = [
   "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
@@ -118,7 +109,7 @@ const Portfolio = () => {
       company: 'SCOPE, VITCC', 
       period: 'May 2025 - Jul 2025',
       role: 'Summer Research Intern - AI Orchestration',
-      description: 'Designed LLM-powered educational agents using Lang Chain and Lang Graph, tested with 50+ users'
+      description: 'Designed LLM-powered educational agents using Lang Chain and Lang Graph'
     },
     {
       company: 'Infosys (Pragathi Cohort 3)',
@@ -227,10 +218,7 @@ useEffect(() => {
       </nav>
    
     <PortfolioHero taglines={taglines} Typewriter={Typewriter} />
-
-
-
-      <ProjectsSection />
+    <ProjectsSection />
 <section id="skill" className="py-20 px-8">
   <div className="max-w-7xl mx-auto">
     <h2 className="text-center text-5xl font-bold mb-16 relative z-20">Tech Stacks</h2>
