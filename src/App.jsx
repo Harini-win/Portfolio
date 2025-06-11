@@ -254,45 +254,44 @@ useEffect(() => {
       </section>
       <LeadershipResearchSection />
       <ClubsSection />
-      <footer id="contact" className="py-20 px-8 border-t border-gray-800 relative z-30">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-4 gap-8 mb-16">
-            <div>
-              <h3 className="text-gray-400 font-medium mb-4">NAVIGATION</h3>
-              <ul className="space-y-2">
-                <li><a href="#home" className="text-gray-300 hover:text-white transition-colors">Home</a></li>
-                <li><a href="#project" className="text-gray-300 hover:text-white transition-colors">Projects</a></li>
-                <li><a href="#experience" className="text-gray-300 hover:text-white transition-colors">Experience</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-gray-400 font-medium mb-4">CONTACT</h3>
-              <ul className="space-y-2">
-                <li><a href="https://www.linkedin.com/in/harini-s-4b127428b/" className="text-gray-300 hover:text-white transition-colors">LinkedIn →</a></li>
-                <li><a href="https://github.com/Harini-win" className="text-gray-300 hover:text-white transition-colors">Github →</a></li>
-                <li><a href="mailto:harini.selvakummar@gmail.com" className="text-gray-300 hover:text-white transition-colors">Email →</a></li>
-                <li><a href="/resume.pdf" className="text-gray-300 hover:text-white transition-colors">Resume →</a></li>
-              </ul>
-            </div>
-            <div></div>
-            <div className="text-right">
-              <div className="flex items-center justify-end space-x-2 mb-4">
-                <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                <span className="text-gray-300">Available For Work</span>
-              </div>
-            </div>
-          </div>
-          
-          <div className="flex justify-between items-center pt-8 border-t border-gray-800">
-            <p className="text-gray-500 text-sm">
-              © 2025 . Harini S. All Rights Reserved.
-            </p>
-            <p className="text-gray-500 text-sm">
-              Crafted With React JS And Tailwind CSS.
-            </p>
-          </div>
+   <footer id="contact" className="py-20 px-4 sm:px-8 border-t border-gray-800 relative z-30">
+  <div className="max-w-7xl mx-auto">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+      <div>
+        <h3 className="text-gray-400 font-medium mb-4">NAVIGATION</h3>
+        <ul className="space-y-2">
+          <li><a href="#home" className="text-gray-300 hover:text-white transition-colors">Home</a></li>
+          <li><a href="#project" className="text-gray-300 hover:text-white transition-colors">Projects</a></li>
+          <li><a href="#experience" className="text-gray-300 hover:text-white transition-colors">Experience</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 className="text-gray-400 font-medium mb-4">CONTACT</h3>
+        <ul className="space-y-2">
+          <li><a href="https://www.linkedin.com/in/harini-s-4b127428b/" className="text-gray-300 hover:text-white transition-colors">LinkedIn →</a></li>
+          <li><a href="https://github.com/Harini-win" className="text-gray-300 hover:text-white transition-colors">Github →</a></li>
+          <li><a href="mailto:harini.selvakummar@gmail.com" className="text-gray-300 hover:text-white transition-colors">Email →</a></li>
+          <li><a href="/resume.pdf" className="text-gray-300 hover:text-white transition-colors">Resume →</a></li>
+        </ul>
+      </div>
+      <div className="hidden lg:block"></div>
+      <div className="sm:text-right mt-8 sm:mt-0">
+        <div className="flex sm:justify-end items-center space-x-2 mb-4">
+          <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
+          <span className="text-gray-300">Available For Work</span>
         </div>
-      </footer>
+      </div>
+    </div>
+    <div className="flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-gray-800 gap-4">
+      <p className="text-gray-500 text-sm text-center sm:text-left">
+        © 2025 . Harini S. All Rights Reserved.
+      </p>
+      <p className="text-gray-500 text-sm text-center sm:text-right">
+        Crafted With React JS And Tailwind CSS.
+      </p>
+    </div>
+  </div>
+</footer>
     </div>
   );
 };
