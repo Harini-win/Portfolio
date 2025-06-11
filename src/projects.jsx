@@ -299,16 +299,28 @@ const ProjectsSection = () => {
   const canvasRef = useRef(null);
   const sectionRef = useRef(null);
   const scrollRef = useRef(null);
-  
-  
+
+  // Responsive projects per view
+  const [projectsPerView, setProjectsPerView] = useState(3);
+
+  useEffect(() => {
+    const updateProjectsPerView = () => {
+      if (window.innerWidth < 640) setProjectsPerView(1); // mobile
+      else if (window.innerWidth < 1024) setProjectsPerView(2); // tablet
+      else setProjectsPerView(3); // desktop
+    };
+    updateProjectsPerView();
+    window.addEventListener('resize', updateProjectsPerView);
+    return () => window.removeEventListener('resize', updateProjectsPerView);
+  }, []);
 
   const [activeGroup, setActiveGroup] = useState(0);
-  const projectsPerView = 3;
   const totalGroups = Math.ceil(projects.length / projectsPerView);
 
   const scrollToGroup = (groupIndex) => {
     if (scrollRef.current) {
-      const scrollAmount = groupIndex * (320 + 32) * projectsPerView; // card width + gap
+      const cardWidth = window.innerWidth < 640 ? 272 : 336; // match w-64/w-80 + gap
+      const scrollAmount = groupIndex * cardWidth * projectsPerView;
       scrollRef.current.scrollTo({
         left: scrollAmount,
         behavior: 'smooth'
@@ -320,8 +332,8 @@ const ProjectsSection = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (scrollRef.current) {
+        const cardWidth = window.innerWidth < 640 ? 272 : 336;
         const scrollLeft = scrollRef.current.scrollLeft;
-        const cardWidth = 320 + 32; // card width + gap
         const currentGroup = Math.round(scrollLeft / (cardWidth * projectsPerView));
         setActiveGroup(Math.min(currentGroup, totalGroups - 1));
       }
@@ -338,7 +350,7 @@ const ProjectsSection = () => {
     <section 
       ref={sectionRef}
       id="project" 
-      className="relative py-32 min-h-[900px] px-8 bg-black bg-transparent overflow-hidden"
+      className="relative py-32 min-h-[900px] px-4 sm:px-8 bg-black bg-transparent overflow-hidden"
     >
       {/* Violet Dripping Effect Canvas */}
       <canvas
@@ -349,14 +361,14 @@ const ProjectsSection = () => {
       <VioletDrippingEffect canvasRef={canvasRef} sectionRef={sectionRef} />
       
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto absolute top-40">
-        <h2 className="text-5xl font-bold mb-8">
+      <div className="relative z-10 max-w-7xl mx-auto absolute top-40 left-0 right-0">
+        <h2 className="text-3xl sm:text-5xl font-bold mb-8">
           My Projects
         </h2>
         
         <div 
           ref={scrollRef}
-          className="flex gap-8 overflow-x-auto pb-4 mt-25"
+          className="flex gap-6 sm:gap-8 overflow-x-auto pb-4 mt-25"
           style={{
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
@@ -370,7 +382,7 @@ const ProjectsSection = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group bg-gray-900 bg-opacity-80 backdrop-blur-xl rounded-3xl p-6 hover:bg-opacity-90 transition-all duration-500 cursor-pointer relative overflow-hidden flex-shrink-0 w-80 border border-gray-700 border-opacity-30"
+              className="group bg-gray-900 bg-opacity-80 backdrop-blur-xl rounded-3xl p-6 hover:bg-opacity-90 transition-all duration-500 cursor-pointer relative overflow-hidden flex-shrink-0 w-64 sm:w-80 border border-gray-700 border-opacity-30"
             >
               <div className="relative mb-4">
                 <img
@@ -381,7 +393,7 @@ const ProjectsSection = () => {
               </div>
               
               <div className="flex items-center justify-between">
-                <h3 className="text-xl font-semibold text-white group-hover:text-purple-500 transition-colors">
+                <h3 className="text-lg sm:text-xl font-semibold text-white group-hover:text-purple-500 transition-colors">
                   {project.title}
                 </h3>
                 <a

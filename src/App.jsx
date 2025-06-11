@@ -225,7 +225,7 @@ useEffect(() => {
 
       <section id="experience" className="py-20 px-8">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-5xl font-bold mb-16">
+          <h2 className="text-5xl font-bold mb-16 mx-auto text-center">
             My <span className="text-purple-500">Work Experience</span>
           </h2>
           
