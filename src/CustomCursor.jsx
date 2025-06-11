@@ -6,7 +6,6 @@ const CustomCursor = () => {
     const cursorLarge = document.querySelector('.cursor-large');
     let mouseX = 0, mouseY = 0, largeX = 0, largeY = 0;
 
-    // Mouse move handler
     const mouseMove = (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
@@ -16,7 +15,6 @@ const CustomCursor = () => {
       }
     };
 
-    // Animate large cursor
     function animateLargeCursor() {
       const ease = 0.15;
       largeX += (mouseX - largeX) * ease;
@@ -27,8 +25,6 @@ const CustomCursor = () => {
       }
       requestAnimationFrame(animateLargeCursor);
     }
-
-    // Hover effect for interactive elements
     const hoverElements = document.querySelectorAll(
       'a, button, .group, .cursor-hover, input, textarea, select'
     );
@@ -42,8 +38,6 @@ const CustomCursor = () => {
         if (cursorSmall) cursorSmall.style.transform = 'translate(-50%, -50%) scale(1)';
       });
     });
-
-    // Hide on mouse leave
     const hide = () => {
       if (cursorSmall) cursorSmall.style.opacity = '0';
       if (cursorLarge) cursorLarge.style.opacity = '0';

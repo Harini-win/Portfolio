@@ -4,7 +4,6 @@ const StarfieldBackground = () => {
   const mountRef = useRef(null);
 
   useEffect(() => {
-    // Dynamically load Three.js
     let renderer, scene, camera, stars;
     let animationId;
 
@@ -18,8 +17,6 @@ const StarfieldBackground = () => {
         });
       }
       const THREE = window.THREE;
-
-      // Setup
       const WIDTH = window.innerWidth;
       const HEIGHT = window.innerHeight;
       scene = new THREE.Scene();
@@ -31,8 +28,6 @@ const StarfieldBackground = () => {
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.setSize(WIDTH, HEIGHT);
       mountRef.current.appendChild(renderer.domElement);
-
-      // Stars
       const geometry = new THREE.BufferGeometry();
       const starQty = 1000;
       const spread = 7000; 
@@ -53,8 +48,6 @@ const StarfieldBackground = () => {
       });
       stars = new THREE.Points(geometry, material);
       scene.add(stars);
-
-      // Animation
       let mouseX = 0, mouseY = 0;
       function animate() {
         stars.rotation.x += (mouseY - stars.rotation.x) * 0.000015;
@@ -64,8 +57,6 @@ const StarfieldBackground = () => {
         animationId = requestAnimationFrame(animate);
       }
       animate();
-
-      // Resize
       function onResize() {
         const w = window.innerWidth;
         const h = window.innerHeight;
@@ -74,15 +65,12 @@ const StarfieldBackground = () => {
         renderer.setSize(w, h);
       }
       window.addEventListener("resize", onResize);
-
-      // Mouse
       function onMouseMove(e) {
         mouseX = e.clientX - WIDTH / 2;
         mouseY = e.clientY - HEIGHT / 2;
       }
       document.addEventListener("mousemove", onMouseMove);
 
-      // Cleanup
       return () => {
         window.removeEventListener("resize", onResize);
         document.removeEventListener("mousemove", onMouseMove);

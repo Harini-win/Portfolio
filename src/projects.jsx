@@ -44,7 +44,7 @@ const projects = [
       speed: 0.15,
       scale: 0.3,
       seed: 0.42,
-      color: [0.54, 0.17, 0.89] // Beautiful violet color
+      color: [0.54, 0.17, 0.89] 
     };
 
     const vertexShaderSource = `
@@ -238,8 +238,6 @@ const projects = [
     const shaderProgram = createShaderProgram(gl, vertexShader, fragmentShader);
     
     const uniforms = getUniforms(gl, shaderProgram);
-
-    // Setup geometry
     const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]);
     const vertexBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
@@ -250,8 +248,6 @@ const projects = [
     gl.enableVertexAttribArray(positionLocation);
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
     gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
-
-    // Set uniforms
     gl.uniform1f(uniforms.u_col_width, params.colWidth);
     gl.uniform1f(uniforms.u_speed, params.speed);
     gl.uniform1f(uniforms.u_scale, params.scale);
@@ -300,14 +296,13 @@ const ProjectsSection = () => {
   const sectionRef = useRef(null);
   const scrollRef = useRef(null);
 
-  // Responsive projects per view
   const [projectsPerView, setProjectsPerView] = useState(3);
 
   useEffect(() => {
     const updateProjectsPerView = () => {
-      if (window.innerWidth < 640) setProjectsPerView(1); // mobile
-      else if (window.innerWidth < 1024) setProjectsPerView(2); // tablet
-      else setProjectsPerView(3); // desktop
+      if (window.innerWidth < 640) setProjectsPerView(1); 
+      else if (window.innerWidth < 1024) setProjectsPerView(2); 
+      else setProjectsPerView(3); 
     };
     updateProjectsPerView();
     window.addEventListener('resize', updateProjectsPerView);
@@ -319,7 +314,7 @@ const ProjectsSection = () => {
 
   const scrollToGroup = (groupIndex) => {
     if (scrollRef.current) {
-      const cardWidth = window.innerWidth < 640 ? 272 : 336; // match w-64/w-80 + gap
+      const cardWidth = window.innerWidth < 640 ? 272 : 336; 
       const scrollAmount = groupIndex * cardWidth * projectsPerView;
       scrollRef.current.scrollTo({
         left: scrollAmount,
@@ -352,15 +347,12 @@ const ProjectsSection = () => {
       id="project" 
       className="relative py-32 min-h-[900px] px-4 sm:px-8 bg-black bg-transparent overflow-hidden"
     >
-      {/* Violet Dripping Effect Canvas */}
       <canvas
         ref={canvasRef}
         className="absolute top-0 left-0 w-full h-full pointer-events-none"
         style={{ zIndex: 1 }}
       />
       <VioletDrippingEffect canvasRef={canvasRef} sectionRef={sectionRef} />
-      
-      {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto absolute top-40 left-0 right-0">
         <h2 className="text-3xl sm:text-5xl font-bold mb-8">
           My Projects

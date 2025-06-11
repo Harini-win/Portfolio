@@ -72,15 +72,12 @@ const ClubsSection = () => {
       }
 
       window.gsap.registerPlugin(window.ScrollTrigger);
-
-      // Set initial positions - first card is already in center, others start from bottom left
       const startX = -400;
       const startY = window.innerHeight + 200;
       
       cardRefs.current.forEach((card, index) => {
         if (card) {
           if (index === 0) {
-            // First card is already positioned at center and visible
             window.gsap.set(card, { 
               x: 0, 
               y: 0,
@@ -90,7 +87,6 @@ const ClubsSection = () => {
               visibility: "visible"
             });
           } else {
-            // Other cards start hidden at bottom left
             window.gsap.set(card, { 
               x: startX, 
               y: startY,
@@ -102,29 +98,23 @@ const ClubsSection = () => {
           }
         }
       });
-
-      // Create timeline for sequential card animations
       const tl = window.gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=400%", // Extended pin duration for all 9 cards
+          end: "+=400%", 
           scrub: 1,
-          pin: true, // Pin the section while animating
+          pin: true,
           anticipatePin: 1,
           id: "clubCards"
         }
       });
-
-      // Center position for stacking with slight variations
       const centerX = 0;
       const centerY = 0;
-
-      // Animate cards one by one - first card stays fixed, others fly in and stack
       cardRefs.current.forEach((card, index) => {
-        if (card && index > 0) { // Skip first card (index 0)
-          const stackOffset = index * 3; // Small offset for stacking effect
-          const rotationVariation = (index % 2 === 0 ? 1 : -1) * (index * 2); // Slight rotation variations
+        if (card && index > 0) {
+          const stackOffset = index * 3;
+          const rotationVariation = (index % 2 === 0 ? 1 : -1) * (index * 2); 
           
           tl.to(card, {
             x: centerX + (index % 2 === 0 ? stackOffset : -stackOffset),
@@ -135,7 +125,7 @@ const ClubsSection = () => {
             visibility: "visible",
             duration: 3,
             ease: "power2.out"
-          }, (index - 1) * 1.2); // Adjusted timing since we skip first card
+          }, (index - 1) * 1.2); 
         }
       });
     };
@@ -152,14 +142,11 @@ const ClubsSection = () => {
   return (
     <section ref={sectionRef} className="min-h-screen py-20 px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto text-center">
-        {/* Section Header */}
         <div className="mb-16">
           <h2 className="text-5xl font-bold text-white mb-6">
             College<span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">Clubs</span>
           </h2>
         </div>
-        
-        {/* Cards Container */}
         <div className="relative h-96 flex items-center justify-center">
           {Clubs.map((club, index) => (
             <div 

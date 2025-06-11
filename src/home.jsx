@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 const PortfolioHero = ({ taglines, Typewriter }) => {
   const [isHovered, setIsHovered] = useState(false);
-
-  // SVG Icons Components
   const RocketIcon = () => (
     <svg width="100" height="100" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_1032_3438)">
@@ -253,7 +251,6 @@ const Icon12 = () => (
 </defs>
 </svg>
 );
-  // Custom icons data with positions around the semicircle
   const cuteIcons = [
     { component: SmileyIcon, position: { bottom: '55%', right: '35%' } },
     { component: RocketIcon, position: { bottom: '75%', right: '35%' }},
@@ -299,7 +296,6 @@ const Icon12 = () => (
         
         <div className="flex justify-between gap-8 mt-6">           
   <div>
-    {/* Left quote icon */}
     <svg 
       className={`w-6 h-6 absolute -left-8 top-0 transition-all duration-700 ease-in-out ${
         isHovered ? 'opacity-0' : 'opacity-100'
@@ -323,7 +319,6 @@ const Icon12 = () => (
   </div>
   
   <div>
-    {/* Left quote icon */}
     <svg 
       className={`w-6 h-6 absolute right-330 top-90 transition-all duration-700 ease-in-out ${
         isHovered ? 'opacity-0' : 'opacity-100'
@@ -355,14 +350,11 @@ const Icon12 = () => (
     </svg>
   </div>
 </div>
-
-        {/* Profile image container with hover area */}
         <div 
           className="relative flex flex-col items-center z-20 mt-8"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          {/* Custom SVG icons that appear on hover */}
           {cuteIcons.map((item, index) => {
             const IconComponent = item.component;
             return (
@@ -381,8 +373,6 @@ const Icon12 = () => (
               </div>
             );
           })}
-          
-          {/* Profile image */}
           <img
             src="/profile.png"
             alt="Profile"
@@ -391,8 +381,6 @@ const Icon12 = () => (
             }`}
           />
         </div>
-
-        {/* Background purple circle */}
         <div className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[720px] h-[360px] bg-purple-700 rounded-t-full m-0 p-0 z-10"></div>
       </div>
     </section>
