@@ -206,17 +206,19 @@ useEffect(() => {
 <section id="skill" className="py-20 px-4 sm:px-8">
   <div className="max-w-7xl mx-auto">
     <h2 className="text-center text-3xl sm:text-5xl font-bold mb-16 relative z-20">Tech Stacks</h2>
-    <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-12 gap-4">
+    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-12 gap-4">
       {techStack.map((tech, index) => (
         <div
           key={index}
           className="group rounded-2xl p-2 text-center"
         >
           <img 
-            src={tech} 
-            alt="Tech Logo"
-            className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 object-contain bg-white rounded-lg p-2 cursor-pointer transition-all duration-300 filter brightness-50 contrast-70 grayscale group-hover:brightness-100 group-hover:contrast-100 group-hover:grayscale-0"
-          />
+  src={tech} 
+  alt="Tech Logo"
+  className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 object-contain bg-white rounded-lg p-2 cursor-pointer transition-all duration-300
+    sm:filter sm:brightness-50 sm:contrast-70 sm:grayscale
+    sm:group-hover:brightness-100 sm:group-hover:contrast-100 sm:group-hover:grayscale-0"
+/>
         </div>
       ))}
     </div>
