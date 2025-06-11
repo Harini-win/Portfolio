@@ -82,8 +82,8 @@ const LeadershipResearchSection = () => {
   return (
     <section className="py-20 px-8 bg-black bg-opacity-10">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-5xl font-bold mb-4 text-white">
+        <div className="mx-auto text-center mb-12">
+          <h2 className="text-5xl font-bold mb-4 text-white relative z-20">
             Leadership & <span className="text-purple-500">Research</span>
           </h2>
         </div>
