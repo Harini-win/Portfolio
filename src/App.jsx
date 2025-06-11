@@ -52,6 +52,7 @@ function Typewriter({ taglines, speed = 80, pause = 1200 }) {
 
 const Portfolio = () => {
   const [currentTagline, setCurrentTagline] = useState(0);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const heroRef = useRef();
   const particlesRef = useRef([]);
   
@@ -162,8 +163,8 @@ useEffect(() => {
       <div className="bg-black text-white min-h-screen">
         <CustomCursor />
         <StarfieldBackground />
-      <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
-        <div className="bg-gray-900 rounded-full px-10 py-4 flex space-x-8">
+      <nav className="hidden sm:flex fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
+        <div className="bg-gray-900 rounded-full px-6 py-3 flex space-x-4">
           <a href="#home" className="text-gray-300 hover:bg-purple-600 hover:text-white px-6 py-2 rounded-full flex items-center space-x-2 transition-colors duration-200">
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
               <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
@@ -199,6 +200,57 @@ useEffect(() => {
             <span>Contact me</span>
           </a>
         </div>
+      </nav>
+        <nav className="sm:hidden fixed top-4 left-0 right-0 z-50 flex justify-between items-center px-4">
+        <span className="font-bold text-lg">Portfolio</span>
+        <button
+          className="p-2 rounded bg-gray-900"
+          onClick={() => setMobileNavOpen((open) => !open)}
+          aria-label="Toggle navigation"
+        >
+          <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d={mobileNavOpen ? "M6 18L18 6M6 6l12 12" : "M4 8h16M4 16h16"} />
+          </svg>
+        </button>
+        {mobileNavOpen && (
+          <div className="absolute top-14 left-4 right-4 bg-gray-900 rounded-xl shadow-lg flex flex-col items-center space-y-4 py-4">
+           <a
+        href="#home"
+        className="block w-full text-center text-gray-300 hover:text-white px-4 py-2 rounded transition-colors"
+        onClick={() => setMobileNavOpen(false)}
+      >
+        Home
+      </a>
+      <a
+        href="#project"
+        className="block w-full text-center text-gray-300 hover:text-white px-4 py-2 rounded transition-colors"
+        onClick={() => setMobileNavOpen(false)}
+      >
+        Projects
+      </a>
+      <a
+        href="#skill"
+        className="block w-full text-center text-gray-300 hover:text-white px-4 py-2 rounded transition-colors"
+        onClick={() => setMobileNavOpen(false)}
+      >
+        Skills
+      </a>
+      <a
+        href="#experience"
+        className="block w-full text-center text-gray-300 hover:text-white px-4 py-2 rounded transition-colors"
+        onClick={() => setMobileNavOpen(false)}
+      >
+        Experience
+      </a>
+      <a
+        href="#contact"
+        className="block w-full text-center text-gray-300 hover:text-white px-4 py-2 rounded transition-colors"
+        onClick={() => setMobileNavOpen(false)}
+      >
+        Contact me
+      </a>
+          </div>
+        )}
       </nav>
    
     <PortfolioHero taglines={taglines} Typewriter={Typewriter} />
