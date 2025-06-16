@@ -1,50 +1,52 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from "react";
 const projects = [
-    {
-      title: 'FlavourRhythm',
-      image: 'https://media.licdn.com/dms/image/v2/D4D2DAQGpjdGNEZ61ZQ/profile-treasury-image-shrink_160_160/B4DZbKBocRG0Ak-/0/1747146148310?e=1749808800&v=beta&t=dinTyYlFT1FlBoV9QghUWP4wbmirwEvtCyz6et_xA4g',
-      link : 'https://backend-flavourrthym.onrender.com/'
-    },
-    {
-      title: 'Orwar custom protocol', 
-      image: 'https://media.licdn.com/dms/image/v2/D4D2DAQGXmGqx7giqWg/profile-treasury-image-shrink_160_160/B4DZbKCIXmGwAk-/0/1747146278997?e=1749808800&v=beta&t=Ekcl16A6kDrogeia7ZRwv-60XdndfUszerJtl-63a0s',
-      link : '/cn.pdf'
-    },
-    {
-      title: 'Stock Market prediction',
-      image: 'https://media.licdn.com/dms/image/v2/D4D2DAQFX0RH6Wlkg7w/profile-treasury-image-shrink_160_160/B4DZbKBJ8_G4As-/0/1747146023605?e=1749808800&v=beta&t=51IR8bk2bTxC7T0EC4L_z5GjCUu0hwDtj8e7I4xcJUE', 
-      link : '/cloud.pdf'
-    },
-    {
-      title: 'Docker and kubernetes orchestration',
-      image: 'https://media.licdn.com/dms/image/v2/D562DAQEgwTHBv3jOow/profile-treasury-image-shrink_160_160/profile-treasury-image-shrink_160_160/0/1730806514761?e=1749808800&v=beta&t=PKQ9Qe4_j_GG57MJCCDqEQgVVbQJwwgrdJsjXX7v8j8', 
-      link: 'https://media.licdn.com/dms/image/v2/D562DAQEgwTHBv3jOow/profile-treasury-image-shrink_160_160/profile-treasury-image-shrink_160_160/0/1730806514761?e=1749808800&v=beta&t=PKQ9Qe4_j_GG57MJCCDqEQgVVbQJwwgrdJsjXX7v8j8', 
-    },
-    {
-      title: 'Github user analytics',
-      image: 'https://avatars.githubusercontent.com/u/201361405?v=4', 
-      link : 'https://github.com/Harini-win/stockholm-github-users'
-    },
-    {
-      title: 'IOT based smart garbage system',
-      image: 'https://media.licdn.com/dms/image/v2/D562DAQFkLadpvqcMQg/profile-treasury-image-shrink_160_160/profile-treasury-image-shrink_160_160/0/1712216129667?e=1749808800&v=beta&t=lktzbMiDEGNKe4ypiUEIujAATrXvWOq0FoE6XWejJkE',
-      link : 'https://media.licdn.com/dms/image/v2/D562DAQFkLadpvqcMQg/profile-treasury-image-shrink_160_160/profile-treasury-image-shrink_160_160/0/1712216129667?e=1749808800&v=beta&t=lktzbMiDEGNKe4ypiUEIujAATrXvWOq0FoE6XWejJkE'
-    }
-  ];
-  const VioletDrippingEffect = ({ canvasRef, sectionRef }) => {
+  {
+    title: "FlavourRhythm",
+    image:"./p1.png",
+    link: "https://backend-flavourrthym.onrender.com/",
+  },
+  {
+    title: "Orwar custom protocol",
+    image:
+      "./p2.png",
+    link: "/cn.pdf",
+  },
+  {
+    title: "Stock Market prediction",
+    image:
+      "./p3.jpg",
+    link: "/cloud.pdf",
+  },
+  {
+    title: "Docker and kubernetes orchestration",
+    image:
+      "./p4.jpg",
+    link: "https://media.licdn.com/dms/image/v2/D562DAQEgwTHBv3jOow/profile-treasury-image-shrink_160_160/profile-treasury-image-shrink_160_160/0/1730806514761?e=1749808800&v=beta&t=PKQ9Qe4_j_GG57MJCCDqEQgVVbQJwwgrdJsjXX7v8j8",
+  },
+  {
+    title: "Github user analytics",
+    image: "https://avatars.githubusercontent.com/u/201361405?v=4",
+    link: "https://github.com/Harini-win/stockholm-github-users",
+  },
+  {
+    title: "IOT based smart garbage system",
+    image:
+      "./p5.jpg",
+    link: "./p5.jpg",}]
+const VioletDrippingEffect = ({ canvasRef, sectionRef }) => {
   useEffect(() => {
     if (!canvasRef.current || !sectionRef.current) return;
 
     const canvas = canvasRef.current;
     const section = sectionRef.current;
     const devicePixelRatio = Math.min(window.devicePixelRatio, 2);
-    
+
     const params = {
       colWidth: 0.6,
       speed: 0.15,
       scale: 0.3,
       seed: 0.42,
-      color: [0.54, 0.17, 0.89] 
+      color: [0.54, 0.17, 0.89],
     };
 
     const vertexShaderSource = `
@@ -57,7 +59,7 @@ const projects = [
           gl_Position = vec4(a_position, 0.0, 1.0);
       }
     `;
-    
+
     const fragmentShaderSource = `
       precision mediump float;
       varying vec2 vUv;
@@ -197,7 +199,9 @@ const projects = [
       gl.compileShader(shader);
 
       if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        console.error("Shader compilation error: " + gl.getShaderInfoLog(shader));
+        console.error(
+          "Shader compilation error: " + gl.getShaderInfoLog(shader)
+        );
         gl.deleteShader(shader);
         return null;
       }
@@ -211,7 +215,9 @@ const projects = [
       gl.linkProgram(program);
 
       if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-        console.error("Shader program linking error: " + gl.getProgramInfoLog(program));
+        console.error(
+          "Shader program linking error: " + gl.getProgramInfoLog(program)
+        );
         return null;
       }
       return program;
@@ -227,16 +233,21 @@ const projects = [
       return uniforms;
     };
 
-    const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+    const gl =
+      canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
     if (!gl) {
       console.error("WebGL is not supported by your browser.");
       return;
     }
 
     const vertexShader = createShader(gl, vertexShaderSource, gl.VERTEX_SHADER);
-    const fragmentShader = createShader(gl, fragmentShaderSource, gl.FRAGMENT_SHADER);
+    const fragmentShader = createShader(
+      gl,
+      fragmentShaderSource,
+      gl.FRAGMENT_SHADER
+    );
     const shaderProgram = createShaderProgram(gl, vertexShader, fragmentShader);
-    
+
     const uniforms = getUniforms(gl, shaderProgram);
     const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]);
     const vertexBuffer = gl.createBuffer();
@@ -258,9 +269,9 @@ const projects = [
       const rect = section.getBoundingClientRect();
       canvas.width = rect.width * devicePixelRatio;
       canvas.height = rect.height * devicePixelRatio;
-      canvas.style.width = rect.width + 'px';
-      canvas.style.height = rect.height + 'px';
-      
+      canvas.style.width = rect.width + "px";
+      canvas.style.height = rect.height + "px";
+
       gl.viewport(0, 0, canvas.width, canvas.height);
       gl.uniform2f(uniforms.u_resolution, canvas.width, canvas.height);
     };
@@ -270,7 +281,7 @@ const projects = [
       const currentTime = performance.now();
       gl.uniform1f(uniforms.u_time, currentTime);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-      
+
       animationId = requestAnimationFrame(render);
     };
 
@@ -278,10 +289,10 @@ const projects = [
     render();
 
     const handleResize = () => resizeCanvas();
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
       if (animationId) {
         cancelAnimationFrame(animationId);
       }
@@ -300,13 +311,13 @@ const ProjectsSection = () => {
 
   useEffect(() => {
     const updateProjectsPerView = () => {
-      if (window.innerWidth < 640) setProjectsPerView(1); 
-      else if (window.innerWidth < 1024) setProjectsPerView(2); 
-      else setProjectsPerView(3); 
+      if (window.innerWidth < 640) setProjectsPerView(1);
+      else if (window.innerWidth < 1024) setProjectsPerView(2);
+      else setProjectsPerView(3);
     };
     updateProjectsPerView();
-    window.addEventListener('resize', updateProjectsPerView);
-    return () => window.removeEventListener('resize', updateProjectsPerView);
+    window.addEventListener("resize", updateProjectsPerView);
+    return () => window.removeEventListener("resize", updateProjectsPerView);
   }, []);
 
   const [activeGroup, setActiveGroup] = useState(0);
@@ -314,11 +325,11 @@ const ProjectsSection = () => {
 
   const scrollToGroup = (groupIndex) => {
     if (scrollRef.current) {
-      const cardWidth = window.innerWidth < 640 ? 272 : 336; 
+      const cardWidth = window.innerWidth < 640 ? 272 : 336;
       const scrollAmount = groupIndex * cardWidth * projectsPerView;
       scrollRef.current.scrollTo({
         left: scrollAmount,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
       setActiveGroup(groupIndex);
     }
@@ -329,22 +340,24 @@ const ProjectsSection = () => {
       if (scrollRef.current) {
         const cardWidth = window.innerWidth < 640 ? 272 : 336;
         const scrollLeft = scrollRef.current.scrollLeft;
-        const currentGroup = Math.round(scrollLeft / (cardWidth * projectsPerView));
+        const currentGroup = Math.round(
+          scrollLeft / (cardWidth * projectsPerView)
+        );
         setActiveGroup(Math.min(currentGroup, totalGroups - 1));
       }
     };
 
     const scrollElement = scrollRef.current;
     if (scrollElement) {
-      scrollElement.addEventListener('scroll', handleScroll);
-      return () => scrollElement.removeEventListener('scroll', handleScroll);
+      scrollElement.addEventListener("scroll", handleScroll);
+      return () => scrollElement.removeEventListener("scroll", handleScroll);
     }
   }, [totalGroups, projectsPerView]);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
-      id="project" 
+      id="project"
       className="relative py-32 min-h-[900px] px-4 sm:px-8 bg-black bg-transparent overflow-hidden"
     >
       <canvas
@@ -354,16 +367,14 @@ const ProjectsSection = () => {
       />
       <VioletDrippingEffect canvasRef={canvasRef} sectionRef={sectionRef} />
       <div className="relative z-10 max-w-7xl mx-auto absolute top-40 left-0 right-0">
-        <h2 className="text-3xl sm:text-5xl font-bold mb-8">
-          My Projects
-        </h2>
-        
-        <div 
+        <h2 className="text-3xl sm:text-5xl font-bold mb-8">My Projects</h2>
+
+        <div
           ref={scrollRef}
           className="flex gap-6 sm:gap-8 overflow-x-auto pb-4 mt-25"
           style={{
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
           }}
         >
           <style jsx>{`
@@ -383,7 +394,7 @@ const ProjectsSection = () => {
                   className="w-full h-44 object-cover rounded-xl group-hover:scale-[1.02] transition-all duration-500"
                 />
               </div>
-              
+
               <div className="flex items-center justify-between">
                 <h3 className="text-lg sm:text-xl font-semibold text-white group-hover:text-purple-500 transition-colors">
                   {project.title}
@@ -406,20 +417,25 @@ const ProjectsSection = () => {
         <div className="flex justify-center mt-8 gap-1">
           {Array.from({ length: totalGroups }).map((_, groupIndex) => {
             const startIndex = groupIndex * projectsPerView;
-            const endIndex = Math.min(startIndex + projectsPerView, projects.length);
+            const endIndex = Math.min(
+              startIndex + projectsPerView,
+              projects.length
+            );
             const isActive = activeGroup === groupIndex;
-            
+
             return (
               <div key={groupIndex} className="flex gap-1">
-                {Array.from({ length: endIndex - startIndex }).map((_, dotIndex) => (
-                  <div
-                    key={`${groupIndex}-${dotIndex}`}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                      isActive ? 'bg-purple-500' : 'bg-gray-500'
-                    }`}
-                    onClick={() => scrollToGroup(groupIndex)}
-                  />
-                ))}
+                {Array.from({ length: endIndex - startIndex }).map(
+                  (_, dotIndex) => (
+                    <div
+                      key={`${groupIndex}-${dotIndex}`}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                        isActive ? "bg-purple-500" : "bg-gray-500"
+                      }`}
+                      onClick={() => scrollToGroup(groupIndex)}
+                    />
+                  )
+                )}
               </div>
             );
           })}

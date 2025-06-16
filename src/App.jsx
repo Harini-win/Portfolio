@@ -109,13 +109,13 @@ const Portfolio = () => {
       company: 'Anju Soft',
       period: 'May 2025 - Jun 2025',
       role: 'AI & Database Intern',
-      description: 'Implement local LLM in existing pipeline to cut down the cost of API calls. Worked on building efficient patient recommendation SP in current database. Built a DRAG model with chromaDB and Langchain to recommend patients based on their symptoms and medical history.'
+      description: 'Implemented local LLM in existing pipeline to cut down the cost of API calls. Worked on building efficient patient recommendation SP in current database. Built a DRAG model with chromaDB and Langchain to recommend patients based on their symptoms and medical history.'
     },
     {
       company: 'SCOPE, VITCC', 
       period: 'May 2025 - Jul 2025',
       role: 'Summer Research Intern - AI Orchestration',
-      description: 'Designed LLM-powered educational agents using Lang Chain and Lang Graph'
+      description: 'Fine-Tuning QWEN-VL to interpret Hand-drawn Diagrams mixed with Text. Developed a custom dataset of 100+ images of hand-drawn diagrams and text. Implemented a multi-modal approach to enhance the model’s understanding of complex diagrams.'
     },
     {
       company: 'Infosys (Pragathi Cohort 3)',
