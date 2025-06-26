@@ -4,7 +4,7 @@ const LeadershipResearchSection = () => {
     {
       title: "President",
       role: "Mathematics Club",
-      description: "Led a team a team of 100 members in organizing technical events, workshops,research and outreach activities",
+      description: "Led a team of 100 members in organizing technical events, workshops,research and outreach activities",
       category: "Leadership"
     },
     {
