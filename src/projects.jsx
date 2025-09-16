@@ -1,6 +1,11 @@
 import React, { useRef, useEffect, useState } from "react";
 const projects = [
   {
+    title: "Bharathanatyam fitness web app",
+    image:"./p6.png",
+    link: "https://github.com/Harini-win/Fitness-tracker-Bharatanatyam-",
+  },
+  {
     title: "FlavourRhythm",
     image:"./p1.png",
     link: "https://backend-flavourrthym.onrender.com/",
