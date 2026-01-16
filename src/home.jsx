@@ -759,7 +759,7 @@ const PortfolioHero = ({ taglines, Typewriter }) => {
                   : "transform translate-x-0 opacity-100"
               }`}
             >
-              Engineer by discipline, creator by passion — I build tech that
+              Engineer by discipline, creator by passion, I build tech that
               solves real-world problems!
             </p>
 
