@@ -37,6 +37,12 @@ const LeadershipResearchSection = () => {
       description: "Managed the website and logistics.",
       category: "Leadership"
     },
+    {
+      title: "Student Council",
+      role: "Student welfare VITCC",
+      description: "Executive member of the student council'26",
+      category: "Leadership"
+    },
   ];
 
   useEffect(() => {
