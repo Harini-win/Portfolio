@@ -31,6 +31,12 @@ const LeadershipResearchSection = () => {
       description: "Worked on improving the education system using AI.",
       category: "Research"
     },
+    {
+      title: "Organizer",
+      role: "TechnoVIT'25",
+      description: "Managed the website and logistics.",
+      category: "Leadership"
+    },
   ];
 
   useEffect(() => {
