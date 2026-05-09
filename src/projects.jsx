@@ -12,12 +12,12 @@ const projects = [
   },
   {
     title: "ARPVD",
-    image:"./p9.png",
+    image:"./p8.png",
     link: "https://github.com/Harini-win/ARPVD",
   },
   {
     title: "AI assisted rocket launch",
-    image:"./p8.png",
+    image:"./p9.png",
     link: "/book.pdf",
   },
   {
