@@ -1,6 +1,26 @@
 import React, { useRef, useEffect, useState } from "react";
 const projects = [
   {
+    title: "Adaptive Fog and Edge AQI Classification",
+    image:"./p7.png",
+    link: "https://github.com/Harini-win/Fog_Adaptive-AQI-Prediction-",
+  },
+  {
+    title: "Medspark",
+    image:"./p10.png",
+    link: "https://github.com/Harini-win/MedSpark",
+  },
+  {
+    title: "ARPVD",
+    image:"./p9.png",
+    link: "https://github.com/Harini-win/ARPVD",
+  },
+  {
+    title: "AI assisted rocket launch",
+    image:"./p8.png",
+    link: "/book.pdf",
+  },
+  {
     title: "Bharathanatyam fitness web app",
     image:"./p6.png",
     link: "https://github.com/Harini-win/Fitness-tracker-Bharatanatyam-",
