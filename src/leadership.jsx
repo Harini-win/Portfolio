@@ -42,6 +42,11 @@ const LeadershipResearchSection = () => {
       role: "Student welfare VITCC",
       description: "Executive member of the student council'26",
       category: "Leadership"
+    },{
+      title: "VibeSense",
+      role: "Springer Journal",
+      description: "Published a journal paper under Healthcare domain.",
+      category: "Research"
     },
   ];
 
